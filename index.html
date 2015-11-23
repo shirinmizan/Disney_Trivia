@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<!--
+Name: Shirin Mizan
+This is the main file for my Trivia which is a html file. Me and my daughter is 
+a big fan of Disney. I tried  my best to give it a good shape . I learned a lot 
+of stuff of web development while making this cool javascript based trivia which 
+will help me for my future assignments. Webdev is Fun and addictive.
+-->
+<html>
+    <head>
+        <title>Disney Trivia</title>
+        <meta charset="UTF-8">
+        <meta charset = "utf-8">
+        <link rel="stylesheet" type="text/css" href="trivia.css" media="screen">
+        <script type ="text/javascript" src='trivia.js'></script>
+
+    </head>
+    <body onload = "setQuestion();">
+        <div id="main">
+            <div id="mainblock">
+                <div id="header">
+                    <h1>Welcome To Disney Trivia </h1>
+                </div> 
+                <div id="qsback">
+                    <div id="qnr">
+                        Question: 
+                    </div>
+                    <div id="score">
+                        Score: 
+                    </div>
+                    <div id="qarea">
+                        <table width="90%" border="0" align="center">
+                            <tbody>
+                                <tr>
+                                    <td class="ques" valign="middle">
+                                        <span id="TriviaQuestion"></span> 
+
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+                <div id="true" class="button" onclick="checkAnswer();" onmouseover ="ButtonSound('audio1')">TRUE</div>
+                <div id="false" class="button1" onclick="checkAnswer();" onmouseover ="ButtonSound('audio1')">FALSE</div>
+                <div id ="restart" class ="button1" onclick ="restart();">RESTART</div>
+                <div style="display:none;">
+                    <audio id="audio1" src="Pixie.mp3" controls preload="auto" ></audio>
+                </div>
+                <div id="sideBar">
+
+                    <div id="menu1" onmouseover="menuShow(1);" onmouseout="menuHide(1);"><p id ="help">Rules:</p></div>
+
+                    <div id="bigMenu1" onmouseover="menuShow(1);" onmouseout="menuHide(1);">
+                        <ol>
+                            <li>Finish the quiz before time's up.</li>
+                            <li>Click the true button if you think the answer is true.</li>
+                            <li>Click the false button if you think the answer is false.</li>
+                            <li>Click restart button  to play again.</li>
+                        </ol>
+                    </div>
+                </div>
+
+                <img class="switch" src="image/pic1.png" alt="something" onmouseover="TimerSwitch(this)">
+                <span id="countdown" class="timer"></span>
+            </div>
+        </div>
+         <script type="text/javascript">
+            //for the countdown timer only
+            var seconds = 10;
+            function secondPassed() {
+                var minutes = Math.round((seconds - 30) / 60);
+                var remainingSeconds = seconds % 60;
+                if (remainingSeconds < 10) {
+                    remainingSeconds = "0" + remainingSeconds;
+                }
+                document.getElementById('countdown').innerHTML = minutes + ":" + remainingSeconds;
+
+                if (seconds === 0) {
+                    clearInterval(countdownTimer);
+                    document.getElementById('countdown').innerHTML = "Time's up!!";
+                }
+
+                else {
+                    seconds--;
+                }
+            }
+
+            var countdownTimer = setInterval('secondPassed()', 1000);
+
+        </script>
+        <footer>&copy 2014 Shirin Mizan</footer>
+    </body>
+</html>
